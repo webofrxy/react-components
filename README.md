@@ -15,9 +15,6 @@ react-admin system solution
 > 网上react后台管理开源免费的完整版项目比较少，所以利用空余时间集成了一个版本出来，已放到GitHub
   启动和打包的时间都稍长，请耐心等待两分钟
 
-- [GitHub地址](https://github.com/yezihaohao/react-admin)
-- [预览地址](https://admiring-dijkstra-34cb29.netlify.com)(已增加响应式，可手机预览😄)
-
 ### 依赖模块
 <span style="color: rgb(184,49,47);">项目是用create-react-app创建的，主要还是列出新加的功能依赖包</span>
 
@@ -77,29 +74,7 @@ react-admin system solution
     - 登录页面(包括GitHub第三方登录)
     - 404页面
 
-### 功能截图
-#### 首页
-![截图](https://raw.githubusercontent.com/yezihaohao/yezihaohao.github.io/master/imgs/rd1.gif)
-#### 按钮图标等
-![截图](https://raw.githubusercontent.com/yezihaohao/yezihaohao.github.io/master/imgs/rd2.gif)
-#### 轮播图
-![截图](https://raw.githubusercontent.com/yezihaohao/yezihaohao.github.io/master/imgs/rd3.gif)
-#### 富文本
-![截图](https://raw.githubusercontent.com/yezihaohao/yezihaohao.github.io/master/imgs/rd4.gif)
-#### 拖拽
-![截图](https://raw.githubusercontent.com/yezihaohao/yezihaohao.github.io/master/imgs/rd5.gif)
-#### 画廊
-![截图](https://raw.githubusercontent.com/yezihaohao/yezihaohao.github.io/master/imgs/rd6.gif)
-#### 动画
-![截图](https://raw.githubusercontent.com/yezihaohao/yezihaohao.github.io/master/imgs/rd7.gif)
-#### 表格
-![截图](https://raw.githubusercontent.com/yezihaohao/yezihaohao.github.io/master/imgs/rd8.gif)
-#### 表单
-![截图](https://raw.githubusercontent.com/yezihaohao/yezihaohao.github.io/master/imgs/rd9.gif)
-#### 图表
-![截图](https://raw.githubusercontent.com/yezihaohao/yezihaohao.github.io/master/imgs/rd10.gif)
-#### 页面
-![截图](https://raw.githubusercontent.com/yezihaohao/yezihaohao.github.io/master/imgs/rd11.gif)
+
 
 ### 代码目录
 ```js
@@ -143,7 +118,7 @@ react-admin system solution
 ### 安装运行
 ##### 1.下载或克隆项目源码
 ##### 2.yarn 或者 npm安装相关包文件(首先推荐使用yarn，国内建议增加淘宝镜像源，不然很慢，你懂的😁)
-> 有些老铁遇到运行时报错，首先确定下是不是最新稳定版的nodejs和npm或者yarn(推荐用yarn)，切记不要用cnpn
+
 
 ```js
 // 首推荐使用yarn装包
@@ -161,12 +136,4 @@ yarn build or npm run build
 ### 结尾
 该项目会不定时更新，后续时间会添加更多的模块
 
-欢迎和感谢大家PR~~👏👏
 
-若有问题，可加QQ群与我交流
-
-- 1群：264591039（已满）
-- 2群：592688854（已满）
-- 3群：743490497
-
-如果对你有帮助，给个star哟~~❤️❤️❤️❤️
