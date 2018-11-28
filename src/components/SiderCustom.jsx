@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import { Layout } from 'antd';
 import { withRouter } from 'react-router-dom';
 import routes from '../routes/config';
-import SiderMenu from './SiderMenu';
+import SiderMenu from './siderMenu';
 
 const { Sider } = Layout;
 

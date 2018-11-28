@@ -6,6 +6,7 @@ import Loadable from 'react-loadable';
 import Loading from './widget/Loading';
 import BasicForm from './forms/BasicForm';
 import BasicTable from './tables/BasicTables';
+import SearchTable from './tables/SearchTable';
 import AdvancedTable from './tables/AdvancedTables';
 import AsynchronousTable from './tables/AsynchronousTable';
 import Echarts from './charts/Echarts';
@@ -27,6 +28,7 @@ import RouterEnter from './auth/RouterEnter';
 import Cssmodule from './cssmodule';
 import MapUi from './ui/map';
 import QueryParams from './extension/QueryParams';
+import CompanyList from './company/CompanyList';
 
 const WysiwygBundle = Loadable({ // 按需加载富文本配置
     loader: () => import('./ui/Wysiwyg'),
@@ -34,9 +36,9 @@ const WysiwygBundle = Loadable({ // 按需加载富文本配置
 });
 
 export default {
-    BasicForm, BasicTable, AdvancedTable, AsynchronousTable,
+    BasicForm, BasicTable, SearchTable, AdvancedTable, AsynchronousTable,
     Echarts, Recharts, Icons, Buttons, Spins, Modals, Notifications,
     Tabs, Banners, Drags, Dashboard, Gallery, BasicAnimations,
     ExampleAnimations, AuthBasic, RouterEnter, WysiwygBundle,
-    Cssmodule, MapUi, QueryParams
+    Cssmodule, MapUi, QueryParams, CompanyList
 }

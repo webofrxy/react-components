@@ -1,12 +1,12 @@
 /**
- * Created by 叶子 on 2017/8/13.
+ * Created by renxy on 2017/8/13.
  */
 import React, { Component } from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
-import AllComponents from '../components';
+import AllComponents from '../components/index';
 import routesConfig from './config';
 import queryString from 'query-string';
-
+console.log(AllComponents)
 export default class CRouter extends Component {
     requireAuth = (permission, component) => {
         const { auth } = this.props;

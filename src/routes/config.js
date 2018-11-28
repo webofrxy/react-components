@@ -30,6 +30,7 @@ export default {
                 { key: '/app/table/basicTable', title: '基础表格', component: 'BasicTable'},
                 { key: '/app/table/advancedTable', title: '高级表格', component: 'AdvancedTable'},
                 { key: '/app/table/asynchronousTable', title: '异步表格', component: 'AsynchronousTable'},
+                { key: '/app/table/searchTable', title: '搜索表格', component: 'SearchTable'},
             ],
         },
         {
@@ -67,6 +68,12 @@ export default {
             subs: [
                 { key: '/app/extension/queryParams', title: '问号形式参数', component: 'QueryParams', query: '?param1=1&param2=2' },
             ],
+        },
+        { 
+            key: '/app/company', title: '公司信息', icon:'mail',
+            subs: [
+                { key: './app/company/list', title:'公司', component: 'CompanyList'},
+            ]
         },
     ],
     others: [] // 非菜单相关路由
