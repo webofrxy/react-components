@@ -6,7 +6,7 @@ import { Route, Redirect, Switch } from 'react-router-dom';
 import AllComponents from '../components/index';
 import routesConfig from './config';
 import queryString from 'query-string';
-console.log(AllComponents)
+console.log(routesConfig)
 export default class CRouter extends Component {
     requireAuth = (permission, component) => {
         const { auth } = this.props;
