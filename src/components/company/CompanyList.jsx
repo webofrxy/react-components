@@ -57,22 +57,7 @@ const data = [
 
 ];
 
-const SearchList = () => (
-    <div className="search-wrap">
-        <div>
-            <label>名称</label>
-            <Input placeholder="请输入搜索名称" className="input-w170" />
-        </div>
-        <div>
-            <label>地址</label>
-            <Input placeholder="请输入搜索地址" className="input-w170" />
-        </div>
-    </div>
-)
 
-const ButtonList = () => (
-    <Button onClick={clearAll}>重置</Button>
-)
 
 class CompanyList extends Component {
     constructor() {
@@ -82,13 +67,43 @@ class CompanyList extends Component {
             name:'',
             address:'',
         }
+        this.clearAll = this.clearAll.bind(this);
     }
     clearAll() {
         let that = this
         console.log(that.state)
-        that.state.name = '';
-        that.state.address = '';
+        this.setState({
+            name:'',
+            address: ''
+        })
     }
+    handlerName(e){
+        const value = e.target.value;
+        this.setState({
+            name: value
+        })
+    }
+    handlerAddress(e){
+        const value = e.target.value;
+        this.setState({
+            address: value
+        })
+    }
+    ButtonList = () => (
+        <Button onClick={this.clearAll}>重置</Button>
+    )
+    SearchList = () => (
+        <div className="search-wrap">
+            <div>
+                <label>名称</label>
+                <Input placeholder="请输入搜索名称" value={this.state.name} onChange={this.handlerName.bind(this)} className="input-w170" />
+            </div>
+            <div>
+                <label>地址</label>
+                <Input placeholder="请输入搜索地址" className="input-w170" value={this.state.address} onChange={this.handlerAddress.bind(this)} />
+            </div>
+        </div>
+    )
     render() {
         return (
             <div className="gutter-example">
@@ -97,7 +112,7 @@ class CompanyList extends Component {
                     <Col className="gutter-row" md={24}>
                         <div className="gutter-box">
                             <Card bordered={false}>
-                                <SearchContent templateLeft={SearchList} templateRight={ButtonList} buttonText={this.state.buttonText} />
+                                <SearchContent templateLeft={this.SearchList} templateRight={this.ButtonList} buttonText={this.state.buttonText} />
                                 <Table columns={columns} dataSource={data} />
                             </Card>
                         </div>
@@ -108,6 +123,8 @@ class CompanyList extends Component {
         );
     }
 } 
+
+
 
 function showConfirm() {
     confirm({
