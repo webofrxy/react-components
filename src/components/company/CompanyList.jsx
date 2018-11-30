@@ -32,7 +32,7 @@ const columns = [{
         <span>
             <a href="javascript:;">Invite {record.name}</a>
             <Divider type="vertical" />
-            <Button onClick={showConfirm}>Delete</Button>
+            <Button onClick={this.showConfirm}>Delete</Button>
         </span>
 
     )
@@ -89,6 +89,21 @@ class CompanyList extends Component {
             address: value
         })
     }
+    searchChanage = (newState) =>{
+        console.log(newState)
+    }
+    showConfirm() {
+        confirm({
+          title: 'Do you Want to delete these items?',
+          content: 'Some descriptions',
+          onOk() {
+            console.log('OK');
+          },
+          onCancel() {
+            console.log('Cancel');
+          },
+        });
+    }
     ButtonList = () => (
         <Button onClick={this.clearAll}>重置</Button>
     )
@@ -112,7 +127,7 @@ class CompanyList extends Component {
                     <Col className="gutter-row" md={24}>
                         <div className="gutter-box">
                             <Card bordered={false}>
-                                <SearchContent templateLeft={this.SearchList} templateRight={this.ButtonList} buttonText={this.state.buttonText} />
+                                <SearchContent templateLeft={this.SearchList} templateRight={this.ButtonList} buttonText={this.state.buttonText} onChange={this.searchChanage} />
                                 <Table columns={columns} dataSource={data} />
                             </Card>
                         </div>
@@ -123,20 +138,5 @@ class CompanyList extends Component {
         );
     }
 } 
-
-
-
-function showConfirm() {
-    confirm({
-      title: 'Do you Want to delete these items?',
-      content: 'Some descriptions',
-      onOk() {
-        console.log('OK');
-      },
-      onCancel() {
-        console.log('Cancel');
-      },
-    });
-}
 
 export default CompanyList;
