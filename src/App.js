@@ -8,8 +8,8 @@ import { bindActionCreators } from 'redux';
 import Routes from './routes';
 import { ThemePicker } from './components/widget';
 
-const { Content, Footer } = Layout;
 
+const { Content, Footer } = Layout;
 class App extends Component {
     state = {
         collapsed: false,

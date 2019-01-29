@@ -72,7 +72,8 @@ export default {
         { 
             key: '/app/company', title: '公司信息', icon:'mail',
             subs: [
-                { key: '/app/company/list', title:'公司', component: 'CompanyList'},
+                { key: '/app/company/list', title:'公司列表', component: 'CompanyList'},
+                { key: '/app/company/detail', title:'公司详情', component: 'CompanyDetail'},
             ]
         },
     ],

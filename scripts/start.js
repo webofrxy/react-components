@@ -1,4 +1,4 @@
-'use strict';
+
 
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = 'development';
@@ -12,6 +12,7 @@ process.on('unhandledRejection', err => {
 });
 
 // Ensure environment variables are read.
+// renxy : 这个文件用来设置端口
 require('../config/env');
 
 
@@ -43,7 +44,7 @@ if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
 // Tools like Cloud9 rely on this.
 const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
-
+console.log(DEFAULT_PORT)
 if (process.env.HOST) {
   console.log(
     chalk.cyan(

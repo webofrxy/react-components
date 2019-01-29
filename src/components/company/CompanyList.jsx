@@ -3,61 +3,11 @@ import { Table, Row, Col, Card, Input, Divider, Tag, Modal } from 'antd';
 import BreadcrumbCustom from '../BreadcrumbCustom';
 import SearchContent from '../common/SearchContent';
 import { Button } from 'antd/lib/radio';
+import axios from 'axios';
+import { Route } from 'react-router-dom';
+
 
 const confirm = Modal.confirm;
-
-const columns = [{
-    title: 'ID',
-    dataIndex: 'id',
-    key: 'id',
-    render: text => <span>{text}</span>,
-}, {
-    title: '名称',
-    dataIndex: 'name',
-    key: 'name',
-}, {
-    title: '地址',
-    dataIndex: 'address',
-    key: 'address',
-},{
-    title: '标签',
-    dataIndex: 'tag',
-    key: 'tag',
-    render: (tag,record) => (<Tag>{record.tag}</Tag>)
-},{
-    title: '操作',
-    dataIndex: 'action',
-    key:'action',
-    render: (text, record) => (
-        <span>
-            <a href="javascript:;">Invite {record.name}</a>
-            <Divider type="vertical" />
-            <Button onClick={this.showConfirm}>Delete</Button>
-        </span>
-
-    )
-}
-
-];
-const data = [
-    {
-        key:'1',
-        id:'1',
-        name:'测试',
-        address:'测试地址',
-        tag:'标签1'
-    },
-    {
-        key:'2',
-        id:'2',
-        name:'测试2',
-        address:'测试地址2',
-        tag:'标签2'
-    },
-
-];
-
-
 
 class CompanyList extends Component {
     constructor() {
@@ -66,12 +16,17 @@ class CompanyList extends Component {
             buttonText: '搜索',
             name:'',
             address:'',
+            list:[]
         }
         this.clearAll = this.clearAll.bind(this);
+        this.showConfirm = this.showConfirm.bind(this);
+        this.toDetail = this.toDetail.bind(this);
+    };
+    //组件渲染顺序问题
+    componentDidMount(){
+        this.searchChanage();
     }
     clearAll() {
-        let that = this
-        console.log(that.state)
         this.setState({
             name:'',
             address: ''
@@ -90,11 +45,22 @@ class CompanyList extends Component {
         })
     }
     searchChanage = (newState) =>{
-        console.log(newState)
+        axios.get(' https://www.easy-mock.com/mock/5a7282e38d0c633b9c4adc61/hzanchu/api/news/get_list').then((res)=>{
+            let r = res.data;
+            if(r.data.error === 0){
+                this.setState({
+                    list: r.data.data
+                })
+                console.log(this.state.list)
+            }
+            console.log(res)
+        }).catch((error)=>{
+            console.log(error)
+        })
     }
     showConfirm() {
         confirm({
-          title: 'Do you Want to delete these items?',
+          title: '确认删除这条数据吗?',
           content: 'Some descriptions',
           onOk() {
             console.log('OK');
@@ -119,6 +85,51 @@ class CompanyList extends Component {
             </div>
         </div>
     )
+    //点击事件传参问题
+    toDetail(record){
+        console.log(record)
+        this.props.history.push({pathname:'/app/company/detail',name:record.name})
+    }
+    
+    columns = [
+        {
+            title: 'ID',
+            dataIndex: 'id',
+            key: 'id',
+            render: text => <span>{text}</span>,
+        }, {
+            title: '名称',
+            dataIndex: 'name',
+            key: 'name',
+        }, {
+            title: '链接',
+            dataIndex: 'router',
+            key: 'router',
+        },{
+            title: '图片',
+            dataIndex: 'img',
+            key: 'img',
+            render: (img,record) => (<span>img</span>)
+        },{
+            title: '时间',
+            dataIndex: 'time',
+            key: 'time',
+            render: (time,record) => (<span>time</span>)
+        },{
+            title: '操作',
+            dataIndex: 'action',
+            key:'action',
+            render: (text, record) => (
+                <span>
+                    <Button onClick={this.toDetail.bind(this,record)}> 查看</Button>
+                    <Divider type="vertical" />
+                    <Button onClick={this.showConfirm}>删除</Button>
+                </span>
+
+            )
+        }
+
+    ];
     render() {
         return (
             <div className="gutter-example">
@@ -127,8 +138,8 @@ class CompanyList extends Component {
                     <Col className="gutter-row" md={24}>
                         <div className="gutter-box">
                             <Card bordered={false}>
-                                <SearchContent templateLeft={this.SearchList} templateRight={this.ButtonList} buttonText={this.state.buttonText} onChange={this.searchChanage} />
-                                <Table columns={columns} dataSource={data} />
+                                <SearchContent templateLeft={this.SearchList} templateRight={this.ButtonList} buttonText={this.state.buttonText} searchChanage={this.searchChanage} />
+                                <Table columns={this.columns} dataSource={this.state.list} rowKey="name" />
                             </Card>
                         </div>
                     </Col>
